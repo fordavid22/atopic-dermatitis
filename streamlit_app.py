@@ -5,7 +5,10 @@ import requests
 import streamlit as st
 from PIL import Image
 
-URL = "http://127.0.0.1:5000/detect_skin_defect"
+
+from app.skin_app_st import skin_defects_from_image
+
+# URL = "http://127.0.0.1:5000/detect_skin_defect"
 
 st.set_page_config(layout="wide", page_title="Atopic Eczema Classifier")
 
@@ -60,9 +63,13 @@ def file_upload_callback(img_input):
 
 def classify_image(encoded_img_str):
     body = {"image":encoded_img_str}
-    response = requests.post(url=URL, json=body)
-    if response.status_code == 200:
-        result = response.json()
+
+    result = skin_defects_from_image(body)
+    # response = requests.post(url=URL, json=body)
+    # if response.status_code == 200:
+    #     result = response.json()
+
+    if result:
         st.info(
                     f"""
                         {result['predicted_classes'][0]}: {result['probabilities'][0] * 100:0.2f}%
