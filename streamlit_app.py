@@ -92,7 +92,8 @@ uploaded_img = st.sidebar.file_uploader(
 #                 on_change=camera_on_change_callback
 #             )
 
-file_upload_callback(uploaded_img)
+if uploaded_img:
+    file_upload_callback(uploaded_img)
 # if st.session_state.uploaded_img_changed and uploaded_img:
 #     file_upload_callback(uploaded_img)
 # elif st.session_state.camera_img_changed and camera_img:
