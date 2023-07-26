@@ -14,11 +14,8 @@ class RandomRotationTransform:
 
 DATA_TRANSFORMS = {
             "train" : transforms.Compose([
+                    transforms.CenterCrop(640),
                     RandomRotationTransform([90, 180, 270]),
-                    transforms.RandomHorizontalFlip(),
-                    transforms.RandomVerticalFlip(),
-                    # transforms.RandomResizedCrop(300),
-                    transforms.CenterCrop(500),
                     transforms.ToTensor(),
                     #transforms.Normalize(
                     #        mean=[0.485, 0.456, 0.406],
@@ -26,8 +23,7 @@ DATA_TRANSFORMS = {
                     #    )
                 ]),
             "test" : transforms.Compose([
-                    # transforms.Resize(300),
-                    transforms.CenterCrop(500),
+                    transforms.CenterCrop(640),
                     transforms.ToTensor(),
                     #transforms.Normalize(
                     #        mean=[0.485, 0.456, 0.406],
