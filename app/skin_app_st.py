@@ -9,7 +9,7 @@ from app.skin_net.skin_net import SkinNet
 from app.skin_net.skin_util import DATA_TRANSFORMS
 
 
-MODEL_PATH = pathlib.Path(__file__).parent/"models/attempt-5-best.pth"
+MODEL_PATH = pathlib.Path(__file__).parent/"models/attempt-8-best.pth"
 
 SEED = 42
 
