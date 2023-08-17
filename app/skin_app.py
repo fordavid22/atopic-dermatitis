@@ -22,6 +22,9 @@ IMAGE_MODEL = SkinNet(num_class=2, pretrained=False).to(DEVICE)
 IMAGE_MODEL.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE))
 IMAGE_MODEL.eval()
 
+@app.route("/", methods=["GET", "POST"])
+def home():
+    return json.dumps({"Message": "Welcome to atopic dermatitis"})
 
 @app.route("/detect_skin_defect", methods=["POST"])
 def skin_defects_from_image():
