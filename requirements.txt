@@ -1,8 +1,9 @@
 numpy
-flask
+Flask==2.3.2
 gunicorn
-flask-cors
+Flask-Cors==3.0.10
 pillow
+Werkzeug==2.3.4
 torch==1.12.0+cpu
 torchvision==0.13.0+cpu
 
