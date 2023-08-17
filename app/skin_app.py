@@ -13,7 +13,7 @@ from skin_net.skin_util import DATA_TRANSFORMS
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
-MODEL_PATH = pathlib.Path(__file__).parent/"models/attempt-5-best.pth"
+MODEL_PATH = pathlib.Path(__file__).parent/"models/attempt-8-best.pth"
 
 SEED = 42
 
@@ -54,8 +54,9 @@ def skin_defects_from_image():
 
         raise ValueError("Invalid Content-Type") from None
         
-    except Exception as e:
-        print(e)
+#    except Exception as e:
+    except Exception:
+        # print(e)
         return Response(
                     response=json.dumps(
                         {
@@ -72,4 +73,4 @@ def skin_defects_from_image():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
