@@ -7,8 +7,7 @@ from flask_cors import CORS
 from flask import Flask, request, Response
 from PIL import Image
 
-from skin_net.skin_net import SkinNet
-from skin_net.skin_util import DATA_TRANSFORMS
+from .skin_net import SkinNet, DATA_TRANSFORMS
 
 
 app = Flask(__name__)
