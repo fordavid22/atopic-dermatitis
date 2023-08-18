@@ -36,7 +36,8 @@ def skin_defects_from_image():
             b64_encoded_img = request.get_json()["image"]
             image = Image.open(io.BytesIO(base64.b64decode(b64_encoded_img))).convert("RGB")
             image_t = DATA_TRANSFORMS["test"](image).unsqueeze(0).to(DEVICE)
-            output = IMAGE_MODEL(image_t)
+            with torch.no_grad():
+                output = IMAGE_MODEL(image_t)
             output_probs = torch.nn.functional.softmax(output, dim=1)
             idx_to_class = {V:K for K, V in class_to_idx.items()}
             probs, classes = torch.topk(output_probs, 2)
